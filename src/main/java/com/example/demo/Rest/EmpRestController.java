@@ -67,14 +67,13 @@ public class EmpRestController {
 		//Mono<String> just = Mono.just(deleteEmp);
 		return new ResponseEntity<Mono<String>>(deleteEmp,HttpStatus.OK);
 	}
-	
-	@DeleteMapping(value="/dels/{empId}")
-	public ResponseEntity<Mono<String>> DelById1(@PathVariable int empId){
-	//	String deleteEmp =
-				Mono<String> deleteEmp = empServ.deleteEmp(empId);
-		//Mono<String> just = Mono.just(deleteEmp);
-		return new ResponseEntity<Mono<String>>(deleteEmp,HttpStatus.OK);
+	@PutMapping(value="/Update",consumes = "application/json")
+	public ResponseEntity<Mono<String>> EmpUpdate(@RequestBody Emp emp){
+		 Mono<String> updateEmp = empServ.UpdateEmp(emp);
+		//Mono<String> just = Mono.just(uEmp);
+		return new ResponseEntity<Mono<String>>(updateEmp,HttpStatus.ACCEPTED);
 	}
+	
 	
 	
 }
